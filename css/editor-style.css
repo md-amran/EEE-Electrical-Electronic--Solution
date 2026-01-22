@@ -1,0 +1,1072 @@
+/* কোড এডিটর পেজ স্পেসিফিক স্টাইল */
+
+.editor-container {
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: calc(100vh - 160px);
+}
+
+.editor-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 30px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 20px;
+    color: white;
+    box-shadow: 0 15px 35px rgba(102, 126, 234, 0.3);
+}
+
+.editor-header h1 {
+    font-size: 2.8rem;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.editor-header .subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* মূল এডিটর লেআউট */
+.editor-main {
+    display: grid;
+    grid-template-columns: 280px 1fr 300px;
+    gap: 25px;
+    margin-top: 30px;
+    height: calc(100vh - 300px);
+    min-height: 700px;
+}
+
+@media (max-width: 1400px) {
+    .editor-main {
+        grid-template-columns: 250px 1fr;
+    }
+    
+    .editor-rightbar {
+        grid-column: 1 / -1;
+        height: 300px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .editor-main {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+}
+
+/* সাইডবার */
+.editor-sidebar {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    overflow-y: auto;
+}
+
+.sidebar-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.sidebar-section h3 {
+    font-size: 1.2rem;
+    color: #1e293b;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f1f5f9;
+}
+
+.select-control {
+    padding: 12px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #1e293b;
+    background: white;
+    width: 100%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.select-control:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* ফন্ট সাইজ কন্ট্রোল */
+.font-size-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+    background: #f8fafc;
+    border-radius: 8px;
+}
+
+.font-btn {
+    width: 32px;
+    height: 32px;
+    border: 2px solid #e2e8f0;
+    background: white;
+    border-radius: 6px;
+    color: #475569;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.font-btn:hover {
+    border-color: #667eea;
+    color: #667eea;
+    background: #f1f5f9;
+}
+
+#fontSizeDisplay {
+    min-width: 50px;
+    text-align: center;
+    font-weight: 600;
+    color: #1e293b;
+}
+
+/* এডিটর অপশনস */
+.option-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.option-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    color: #475569;
+    font-size: 14px;
+    position: relative;
+}
+
+.option-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.option-checkbox .checkmark {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #cbd5e1;
+    border-radius: 4px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.option-checkbox input:checked ~ .checkmark {
+    background: #667eea;
+    border-color: #667eea;
+}
+
+.option-checkbox .checkmark::after {
+    content: '';
+    position: absolute;
+    display: none;
+    left: 5px;
+    top: 2px;
+    width: 4px;
+    height: 8px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.option-checkbox input:checked ~ .checkmark::after {
+    display: block;
+}
+
+/* ফাইল এক্সপ্লোরার */
+.file-explorer {
+    border: 2px dashed #e2e8f0;
+    border-radius: 8px;
+    padding: 15px;
+    min-height: 150px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.file-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.file-item:hover {
+    background: #f1f5f9;
+}
+
+.file-item.active {
+    background: #e0f2fe;
+    border-left: 3px solid #38bdf8;
+}
+
+.file-icon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #64748b;
+}
+
+.file-name {
+    flex: 1;
+    font-size: 14px;
+    color: #475569;
+}
+
+.file-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.btn-sm {
+    padding: 8px 15px;
+    font-size: 12px;
+    flex: 1;
+}
+
+/* সম্প্রতিক কোড */
+.recent-codes {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.recent-code-item {
+    background: #f8fafc;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-left: 3px solid transparent;
+}
+
+.recent-code-item:hover {
+    background: #e2e8f0;
+    border-left-color: #667eea;
+}
+
+.recent-code-title {
+    font-weight: 600;
+    color: #1e293b;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.recent-code-language {
+    font-size: 12px;
+    color: #64748b;
+}
+
+/* এডিটর কন্টেন্ট */
+.editor-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+}
+
+/* টুলবার */
+.editor-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background: #f8fafc;
+    border-radius: 10px;
+    border: 2px solid #e2e8f0;
+}
+
+.toolbar-left {
+    flex: 1;
+}
+
+.file-tabs {
+    display: flex;
+    gap: 5px;
+    overflow-x: auto;
+    padding-bottom: 5px;
+}
+
+.file-tab {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    background: white;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    min-width: 120px;
+}
+
+.file-tab.active {
+    background: #667eea;
+    border-color: #667eea;
+    color: white;
+}
+
+.file-tab:hover:not(.active) {
+    background: #f1f5f9;
+    border-color: #cbd5e1;
+}
+
+.tab-close {
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    padding: 2px;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.tab-close:hover {
+    opacity: 1;
+}
+
+.toolbar-right {
+    display: flex;
+    align-items: center;
+}
+
+.toolbar-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.toolbar-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: white;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    color: #475569;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.toolbar-btn:hover {
+    background: #f1f5f9;
+    border-color: #cbd5e1;
+    transform: translateY(-2px);
+}
+
+.toolbar-btn .btn-text {
+    display: inline;
+}
+
+@media (max-width: 768px) {
+    .toolbar-btn .btn-text {
+        display: none;
+    }
+    
+    .toolbar-btn {
+        padding: 10px;
+    }
+}
+
+.toolbar-btn#runBtn {
+    background: #10b981;
+    border-color: #10b981;
+    color: white;
+}
+
+.toolbar-btn#runBtn:hover {
+    background: #059669;
+    border-color: #059669;
+}
+
+.toolbar-btn#uploadBtn {
+    background: #3b82f6;
+    border-color: #3b82f6;
+    color: white;
+}
+
+.toolbar-btn#uploadBtn:hover {
+    background: #2563eb;
+    border-color: #2563eb;
+}
+
+.toolbar-divider {
+    width: 1px;
+    height: 30px;
+    background: #e2e8f0;
+    margin: 0 10px;
+}
+
+/* কোড এডিটর কন্টেইনার */
+.code-editor-container {
+    flex: 1;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 400px;
+}
+
+.code-editor {
+    flex: 1;
+    overflow: hidden;
+}
+
+/* CodeMirror কাস্টম স্টাইল */
+.CodeMirror {
+    height: 100% !important;
+    font-family: 'Fira Code', 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.CodeMirror-gutters {
+    background: #f8fafc !important;
+    border-right: 1px solid #e2e8f0 !important;
+}
+
+.CodeMirror-linenumber {
+    color: #94a3b8 !important;
+}
+
+.CodeMirror-activeline-gutter {
+    background: #e0f2fe !important;
+}
+
+.CodeMirror-focused .CodeMirror-activeline-gutter {
+    background: #bae6fd !important;
+}
+
+/* এডিটর স্ট্যাটাস বার */
+.editor-statusbar {
+    background: #f8fafc;
+    border-top: 2px solid #e2e8f0;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: #64748b;
+}
+
+.status-left, .status-right {
+    display: flex;
+    gap: 20px;
+}
+
+/* আউটপুট কন্টেইনার */
+.output-container {
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+}
+
+.output-tabs {
+    display: flex;
+    background: #f8fafc;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.output-tab {
+    padding: 15px 30px;
+    background: none;
+    border: none;
+    border-right: 2px solid #e2e8f0;
+    color: #64748b;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+}
+
+.output-tab:hover {
+    background: #e2e8f0;
+    color: #475569;
+}
+
+.output-tab.active {
+    background: white;
+    color: #667eea;
+    border-bottom: 3px solid #667eea;
+}
+
+.output-content {
+    flex: 1;
+    overflow: hidden;
+}
+
+.output-panel {
+    display: none;
+    height: 100%;
+    flex-direction: column;
+}
+
+.output-panel.active {
+    display: flex;
+}
+
+.output-header {
+    padding: 15px 20px;
+    background: #f8fafc;
+    border-bottom: 2px solid #e2e8f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.output-header span {
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.output-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.output-action-btn {
+    padding: 8px 15px;
+    background: white;
+    border: 2px solid #e2e8f0;
+    border-radius: 6px;
+    color: #475569;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+}
+
+.output-action-btn:hover {
+    background: #f1f5f9;
+    border-color: #cbd5e1;
+}
+
+/* আউটপুট টেক্সট */
+.output-text {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background: #1e293b;
+    color: #e2e8f0;
+    font-family: 'Fira Code', monospace;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.output-welcome {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: #94a3b8;
+    text-align: center;
+}
+
+.output-welcome i {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #64748b;
+}
+
+.output-welcome h3 {
+    color: #e2e8f0;
+    margin-bottom: 10px;
+}
+
+.output-line {
+    padding: 5px 0;
+    border-bottom: 1px solid #334155;
+}
+
+.output-line.error {
+    color: #f87171;
+    background: rgba(239, 68, 68, 0.1);
+}
+
+.output-line.success {
+    color: #34d399;
+}
+
+.output-line.info {
+    color: #60a5fa;
+}
+
+/* সিরিয়াল মনিটর */
+.serial-controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.serial-controls select,
+.serial-controls input {
+    padding: 8px 12px;
+    border: 2px solid #e2e8f0;
+    border-radius: 6px;
+    background: white;
+}
+
+.serial-terminal {
+    flex: 1;
+    padding: 20px;
+    background: #1e293b;
+    color: #e2e8f0;
+    font-family: 'Courier New', monospace;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+
+.serial-input {
+    display: flex;
+    padding: 15px;
+    background: #f8fafc;
+    border-top: 2px solid #e2e8f0;
+}
+
+.serial-input input {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid #e2e8f0;
+    border-radius: 6px;
+    margin-right: 10px;
+}
+
+.serial-input button {
+    padding: 12px 25px;
+    background: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.serial-input button:hover {
+    background: #2563eb;
+}
+
+/* সমস্যা প্যানেল */
+.problems-list {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.problem-item {
+    padding: 15px;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.problem-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.problem-icon.error {
+    background: #fecaca;
+    color: #dc2626;
+}
+
+.problem-icon.warning {
+    background: #fef3c7;
+    color: #d97706;
+}
+
+.problem-icon.info {
+    background: #dbeafe;
+    color: #2563eb;
+}
+
+.problem-content {
+    flex: 1;
+}
+
+.problem-title {
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 5px;
+}
+
+.problem-description {
+    color: #64748b;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.problem-location {
+    font-size: 12px;
+    color: #94a3b8;
+    font-family: monospace;
+}
+
+/* ডিবাগ কনসোল */
+.debug-console {
+    flex: 1;
+    padding: 20px;
+    background: #1e293b;
+    color: #e2e8f0;
+    font-family: 'Fira Code', monospace;
+    overflow-y: auto;
+    white-space: pre-wrap;
+}
+
+/* রাইটবার */
+.editor-rightbar {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    overflow-y: auto;
+}
+
+.rightbar-section h3 {
+    font-size: 1.2rem;
+    color: #1e293b;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f1f5f9;
+}
+
+/* কোড সাজেশন */
+.suggestions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.suggestion-item {
+    padding: 12px;
+    background: #f8fafc;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-left: 3px solid transparent;
+}
+
+.suggestion-item:hover {
+    background: #e2e8f0;
+    border-left-color: #667eea;
+}
+
+.suggestion-title {
+    font-weight: 600;
+    color: #1e293b;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.suggestion-description {
+    font-size: 12px;
+    color: #64748b;
+}
+
+/* কুইক অ্যাকশন */
+.quick-actions {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.quick-action-btn {
+    padding: 15px;
+    background: white;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    color: #475569;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
+}
+
+.quick-action-btn:hover {
+    background: #f1f5f9;
+    border-color: #cbd5e1;
+    transform: translateY(-2px);
+}
+
+.quick-action-btn i {
+    font-size: 1.5rem;
+    color: #667eea;
+}
+
+/* সিমুলেশন প্যানেল */
+.simulation-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.board-display {
+    background: #f8fafc;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+}
+
+.arduino-board {
+    width: 200px;
+    height: 150px;
+    background: #1e293b;
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.pin {
+    position: absolute;
+    width: 15px;
+    height: 30px;
+    background: #64748b;
+    border-radius: 3px;
+}
+
+.pin.digital {
+    background: #3b82f6;
+}
+
+.pin.pin-2 { left: 10px; top: 20px; }
+.pin.pin-3 { left: 30px; top: 20px; }
+.pin.pin-4 { left: 50px; top: 20px; }
+.pin.pin-5 { left: 70px; top: 20px; }
+.pin.pin-6 { left: 90px; top: 20px; }
+.pin.pin-7 { left: 110px; top: 20px; }
+.pin.pin-8 { left: 130px; top: 20px; }
+.pin.pin-9 { left: 150px; top: 20px; }
+.pin.pin-10 { left: 170px; top: 20px; }
+.pin.pin-11 { left: 10px; top: 120px; }
+.pin.pin-12 { left: 30px; top: 120px; }
+.pin.pin-13 { left: 50px; top: 120px; }
+
+.led {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #64748b;
+}
+
+.led-13 {
+    left: 55px;
+    top: 40px;
+    background: #ef4444;
+}
+
+.led-power {
+    left: 180px;
+    top: 70px;
+    background: #10b981;
+}
+
+.simulation-controls {
+    display: flex;
+    gap: 10px;
+}
+
+/* এডিটর ফুটার */
+.editor-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+    padding: 20px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.status-info {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.status-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #475569;
+}
+
+#connectionStatus {
+    color: #ef4444;
+}
+
+#connectionStatus.connected {
+    color: #10b981;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.footer-actions {
+    display: flex;
+    gap: 15px;
+}
+
+/* মডাল */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 30px;
+    border-bottom: 2px solid #f1f5f9;
+}
+
+.modal-header h3 {
+    margin: 0;
+    color: #1e293b;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    color: #64748b;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+.modal-close:hover {
+    color: #ef4444;
+}
+
+.modal-body {
+    padding: 30px;
+}
+
+.modal-footer {
+    padding: 20px 30px;
+    border-top: 2px solid #f1f5f9;
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+}
+
+/* রেস্পন্সিভ */
+@media (max-width: 768px) {
+    .editor-header h1 {
+        font-size: 2rem;
+    }
+    
+    .editor-header .subtitle {
+        font-size: 1rem;
+    }
+    
+    .toolbar-actions {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .serial-controls {
+        flex-wrap: wrap;
+    }
+    
+    .status-info {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+    
+    .editor-footer {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+}
