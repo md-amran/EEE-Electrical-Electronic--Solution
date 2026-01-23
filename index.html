@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EE Engineering Hub - ইলেকট্রিক্যাল ইঞ্জিনিয়ারিং প্ল্যাটফর্ম</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/free palestine.png" type="image/x-icon">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-container">
+                <!-- Logo -->
+                <a href="index.html" class="logo">
+                    <i class="fas fa-bolt"></i>
+                    <span>EE Hub</span>
+                </a>
+                
+                <!-- Desktop Navigation -->
+                <div class="nav-menu">
+                    <a href="index.html" class="nav-item active">
+                        <i class="fas fa-home"></i>
+                        <span>হোম</span>
+                    </a>
+                    <a href="html/rcc_index.html" class="nav-item">
+                        <i class="fas fa-palette"></i>
+                        <span>রেজিস্টর কোড</span>
+                    </a>
+                    <a href="html/components_index.html" class="nav-item">
+                        <i class="fas fa-microchip"></i>
+                        <span>কম্পোনেন্টস</span>
+                    </a>
+                    <a href="html/code_editor_index.html" class="nav-item">
+                        <i class="fas fa-code"></i>
+                        <span>কোড এডিটর</span>
+                    </a>
+                    <a href="html/iot_dashboard_index.html" class="nav-item">
+                        <i class="fas fa-project-diagram"></i>
+                        <span>IoT প্রোজেক্ট</span>
+                    </a>
+                    <a href="html/help_index.html" class="nav-item">
+                        <i class="fas fa-question-circle"></i>
+                        <span>হেল্প</span>
+                    </a>
+                </div>
+                
+                <!-- Auth Buttons -->
+                <div class="nav-auth">
+                    <a href="html/login.html" class="btn btn-outline">
+                        <i class="fas fa-sign-in-alt"></i>
+                        <span>লগইন</span>
+                    </a>
+                    <a href="html/signup.html" class="btn btn-primary">
+                        <i class="fas fa-user-plus"></i>
+                        <span>সাইন আপ</span>
+                    </a>
+                </div>
+                
+                <!-- Mobile Toggle -->
+                <button class="mobile-toggle" id="mobileToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div class="mobile-menu" id="mobileMenu">
+                <a href="index.html" class="mobile-item active">
+                    <i class="fas fa-home"></i>
+                    <span>হোম</span>
+                </a>
+                <a href="html/rcc_index.html" class="mobile-item">
+                    <i class="fas fa-palette"></i>
+                    <span>রেজিস্টর কালার কোড</span>
+                </a>
+                <a href="html/components_index.html" class="mobile-item">
+                    <i class="fas fa-microchip"></i>
+                    <span>কম্পোনেন্টস</span>
+                </a>
+                <a href="html/code_editor_index.html" class="mobile-item">
+                    <i class="fas fa-code"></i>
+                    <span>কোড এডিটর</span>
+                </a>
+                <a href="html/iot_dashboard_index.html" class="mobile-item">
+                    <i class="fas fa-project-diagram"></i>
+                    <span>IoT প্রোজেক্ট</span>
+                </a>
+                <a href="html/help_index.html" class="mobile-item">
+                    <i class="fas fa-question-circle"></i>
+                    <span>হেল্প</span>
+                </a>
+                
+                <div class="mobile-auth">
+                    <a href="html/login.html" class="btn btn-outline">
+                        <i class="fas fa-sign-in-alt"></i>
+                        <span>লগইন</span>
+                    </a>
+                    <a href="html/signup.html" class="btn btn-primary">
+                        <i class="fas fa-user-plus"></i>
+                        <span>সাইন আপ</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content fade-in">
+                <h1 class="hero-title">ইলেকট্রিক্যাল ইঞ্জিনিয়ারিং এর সম্পূর্ণ প্ল্যাটফর্ম</h1>
+                <p class="hero-subtitle">শিখুন, এক্সপেরিমেন্ট করুন, কন্ট্রোল করুন - সব এক জায়গায়</p>
+                
+                <div class="hero-buttons">
+                    <a href="html/components_index.html" class="btn btn-primary btn-large ripple">
+                        <i class="fas fa-book"></i>
+                        <span>কম্পোনেন্টস শিখুন</span>
+                    </a>
+                    <a href="html/code_editor_index.html" class="btn btn-secondary btn-large ripple">
+                        <i class="fas fa-play"></i>
+                        <span>কোড করুন</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="hero-image">
+                <img src="assets/images/free palestine.png" alt="Circuit Board" class="circuit-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">আমাদের সুবিধাসমূহ</h2>
+            
+            <div class="features-grid">
+                <!-- Feature Card 1 -->
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>রেজিস্টর কালার কোড</h3>
+                    <p>রেজিস্টরের মান থেকে কালার কোড বা কালার কোড থেকে মান নির্ণয় করুন। সহজেই ক্যালকুলেট করুন।</p>
+                    <a href="html/rcc_index.html" class="feature-link">
+                        <span>ব্যবহার করুন</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Feature Card 2 -->
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <h3>কম্পোনেন্টস ডাটাবেজ</h3>
+                    <p>ইলেকট্রিক্যাল এবং ইলেকট্রনিক্সের সকল কম্পোনেন্ট সম্পর্কে বিস্তারিত তথ্য।</p>
+                    <a href="html/components_index.html" class="feature-link">
+                        <span>ব্রাউজ করুন</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Feature Card 3 -->
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>কোড এডিটর</h3>
+                    <p>Python এবং Arduino কোড লিখুন, সিমুলেট করুন এবং সরাসরি মাইক্রোকন্ট্রোলারে আপলোড করুন।</p>
+                    <a href="html/code_editor_index.html" class="feature-link">
+                        <span>এডিট করুন</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Feature Card 4 -->
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h3>IoT প্রোজেক্ট কন্ট্রোল</h3>
+                    <p>আপনার IoT প্রোজেক্টগুলো লগইন করে কন্ট্রোল করুন এবং লাইভ ডাটা মনিটর করুন।</p>
+                    <a href="html/iot_dashboard_index.html" class="feature-link">
+                        <span>কন্ট্রোল করুন</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- About -->
+                <div class="footer-section">
+                    <h3>EE Hub</h3>
+                    <p>ইলেকট্রিক্যাল ইঞ্জিনিয়ারিং স্টুডেন্টদের জন্য সম্পূর্ণ প্ল্যাটফর্ম। শিখুন, এক্সপেরিমেন্ট করুন, সফল হোন।</p>
+                </div>
+                
+                <!-- Links -->
+                <div class="footer-section">
+                    <h3>দ্রুত লিঙ্ক</h3>
+                    <a href="html/help_index.html">
+                        <i class="fas fa-question-circle"></i>
+                        হেল্প ও সাপোর্ট
+                    </a>
+                    <a href="#">
+                        <i class="fas fa-shield-alt"></i>
+                        প্রাইভেসি পলিসি
+                    </a>
+                    <a href="#">
+                        <i class="fas fa-file-contract"></i>
+                        টার্মস অফ ইউজ
+                    </a>
+                    <a href="#">
+                        <i class="fas fa-envelope"></i>
+                        কন্ট্যাক্ট
+                    </a>
+                </div>
+                
+                <!-- Contact -->
+                <div class="footer-section">
+                    <h3>যোগাযোগ</h3>
+                           <a href="mailto:md.amran.914.me@gmail.com?subject=Support%20Request&body=Hello%20Amran,%0A%0AI%20need%20some%20help.">
+    <i class="fas fa-envelope"></i>
+    md.amran.914.me@gmail.com
+</a>
+                    <a href="tel:+8801324563643">
+                        <i class="fas fa-phone"></i>
+                        +880 1324-563-643
+                    </a>
+                    
+                    <div class="social-icons">
+    <a href="https://facebook.com" class="facebook" target="_blank" title="Facebook">
+        <i class="fab fa-facebook-f"></i>
+    </a>
+    <a href="https://youtube.com" class="youtube" target="_blank" title="YouTube">
+        <i class="fab fa-youtube"></i>
+    </a>
+    <a href="https://github.com" class="github" target="_blank" title="GitHub">
+        <i class="fab fa-github"></i>
+    </a>
+    <a href="https://twitter.com" class="twitter" target="_blank" title="Twitter">
+        <i class="fab fa-twitter"></i>
+    </a>
+    <a href="https://instagram.com" class="instagram" target="_blank" title="Instagram">
+        <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://discord.com" class="discord" target="_blank" title="Discord">
+        <i class="fab fa-discord"></i>
+    </a>
+    <a href="https://t.me" class="telegram" target="_blank" title="Telegram">
+        <i class="fab fa-telegram"></i>
+    </a>
+    <a href="https://reddit.com" class="reddit" target="_blank" title="Reddit">
+        <i class="fab fa-reddit"></i>
+    </a>
+    <a href="https://pinterest.com" class="pinterest" target="_blank" title="Pinterest">
+        <i class="fab fa-pinterest"></i>
+</a>
+
+</div>
+                </div>
+            </div>
+            
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <p>&copy; 2024 EE Engineering Hub | তৈরি করেছেন ইলেকট্রিক্যাল ইঞ্জিনিয়ারিং স্টুডেন্ট</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

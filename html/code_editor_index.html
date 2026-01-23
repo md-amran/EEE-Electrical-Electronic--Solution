@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>কোড এডিটর - EE Hub</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../css/editor-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- CodeMirror CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/dracula.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/hint/show-hint.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/fold/foldgutter.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/lint/lint.css">
+</head>
+<body>
+    <!-- নেভিগেশন বার -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-bolt"></i>
+                <span>EE Hub</span>
+            </div>
+            
+            <div class="nav-menu">
+                <a href="../index.html" class="nav-item">
+                    <i class="fas fa-home"></i> হোম
+                </a>
+                <a href="../html/rcc_index.html" class="nav-item">
+                    <i class="fas fa-palette"></i> রেজিস্টর কালার কোড
+                </a>
+                <a href="../html/components_index.html" class="nav-item">
+                    <i class="fas fa-microchip"></i> কম্পোনেন্টস
+                </a>
+                <a href="code_editor_index.html" class="nav-item active">
+                    <i class="fas fa-code"></i> কোড এডিটর
+                </a>
+                <a href="../html/iot_dashboard_index.html" class="nav-item">
+                    <i class="fas fa-project-diagram"></i> IoT প্রোজেক্ট
+                </a>
+                <a href="../html/help_index.html" class="nav-item">
+                    <i class="fas fa-question-circle"></i> হেল্প
+                </a>
+            </div>
+            
+            <div class="nav-auth">
+                <a href="../html/login.html" class="btn btn-outline">
+                    <i class="fas fa-sign-in-alt"></i> লগইন
+                </a>
+                <a href="../html/signup.html" class="btn btn-primary">
+                    <i class="fas fa-user-plus"></i> সাইন আপ
+                </a>
+            </div>
+            
+            <button class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <div class="mobile-menu" id="mobileMenu">
+            <!-- মোবাইল মেনু আইটেম -->
+        </div>
+    </nav>
+
+    <!-- কোড এডিটর মূল কন্টেন্ট -->
+    <div class="editor-container">
+        <div class="editor-header">
+            <h1><i class="fas fa-code"></i> কোড এডিটর ও সিমুলেটর</h1>
+            <p class="subtitle">Python এবং Arduino কোড লিখুন, সিমুলেট করুন এবং সরাসরি আপলোড করুন</p>
+        </div>
+
+        <div class="editor-main">
+            <div class="editor-sidebar">
+                <div class="sidebar-section">
+                    <h3><i class="fas fa-cog"></i> সেটিংস</h3>
+                    
+                    <div class="language-selector">
+                        <label for="languageSelect"><i class="fas fa-language"></i> ভাষা</label>
+                        <select id="languageSelect" class="select-control">
+                            <option value="python">Python</option>
+                            <option value="arduino">Arduino</option>
+                            <option value="c">C/C++</option>
+                            <option value="javascript">JavaScript</option>
+                        </select>
+                    </div>
+                    
+                    <div class="board-selector">
+                        <label for="boardSelect"><i class="fas fa-microchip"></i> বোর্ড টাইপ</label>
+                        <select id="boardSelect" class="select-control">
+                            <option value="arduino-uno">Arduino UNO</option>
+                            <option value="arduino-nano">Arduino Nano</option>
+                            <option value="arduino-mega">Arduino Mega</option>
+                            <option value="esp32">ESP32</option>
+                            <option value="esp8266">ESP8266</option>
+                            <option value="raspberry-pi">Raspberry Pi</option>
+                        </select>
+                    </div>
+                    
+                    <div class="theme-selector">
+                        <label for="themeSelect"><i class="fas fa-palette"></i> থিম</label>
+                        <select id="themeSelect" class="select-control">
+                            <option value="default">ডিফল্ট</option>
+                            <option value="dracula">Dracula</option>
+                            <option value="monokai">Monokai</option>
+                            <option value="solarized">Solarized</option>
+                            <option value="material">Material</option>
+                        </select>
+                    </div>
+                    
+                    <div class="font-size-selector">
+                        <label><i class="fas fa-text-height"></i> ফন্ট সাইজ</label>
+                        <div class="font-size-controls">
+                            <button class="font-btn" id="fontDecrease">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <span id="fontSizeDisplay">14px</span>
+                            <button class="font-btn" id="fontIncrease">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="editor-options">
+                        <h4><i class="fas fa-sliders-h"></i> অপশনস</h4>
+                        <div class="option-group">
+                            <label class="option-checkbox">
+                                <input type="checkbox" id="lineNumbers" checked>
+                                <span class="checkmark"></span>
+                                লাইন নাম্বার
+                            </label>
+                            <label class="option-checkbox">
+                                <input type="checkbox" id="autoComplete" checked>
+                                <span class="checkmark"></span>
+                                অটো কমপ্লিট
+                            </label>
+                            <label class="option-checkbox">
+                                <input type="checkbox" id="syntaxHighlighting" checked>
+                                <span class="checkmark"></span>
+                                সিনট্যাক্স হাইলাইট
+                            </label>
+                            <label class="option-checkbox">
+                                <input type="checkbox" id="wordWrap">
+                                <span class="checkmark"></span>
+                                ওয়ার্ড র্যাপ
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3><i class="fas fa-file-alt"></i> প্রোজেক্ট ফাইল</h3>
+                    <div class="file-explorer" id="fileExplorer">
+                        <!-- ফাইল লিস্ট -->
+                    </div>
+                    <div class="file-actions">
+                        <button class="btn btn-sm" id="newFileBtn">
+                            <i class="fas fa-plus"></i> নতুন ফাইল
+                        </button>
+                        <button class="btn btn-sm" id="uploadFileBtn">
+                            <i class="fas fa-upload"></i> আপলোড
+                        </button>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3><i class="fas fa-history"></i> সম্প্রতিক কোড</h3>
+                    <div class="recent-codes" id="recentCodes">
+                        <!-- সাম্প্রতিক কোড -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="editor-content">
+                <div class="editor-toolbar">
+                    <div class="toolbar-left">
+                        <div class="file-tabs" id="fileTabs">
+                            <!-- ফাইল ট্যাব -->
+                            <div class="file-tab active" data-file="main.py">
+                                <span>main.py</span>
+                                <button class="tab-close">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="toolbar-right">
+                        <div class="toolbar-actions">
+                            <button class="toolbar-btn" id="saveBtn" title="সংরক্ষণ করুন">
+                                <i class="fas fa-save"></i>
+                                <span class="btn-text">সংরক্ষণ</span>
+                            </button>
+                            <button class="toolbar-btn" id="runBtn" title="রান করুন">
+                                <i class="fas fa-play"></i>
+                                <span class="btn-text">রান</span>
+                            </button>
+                            <button class="toolbar-btn" id="compileBtn" title="কম্পাইল করুন">
+                                <i class="fas fa-cogs"></i>
+                                <span class="btn-text">কম্পাইল</span>
+                            </button>
+                            <button class="toolbar-btn" id="uploadBtn" title="আপলোড করুন">
+                                <i class="fas fa-upload"></i>
+                                <span class="btn-text">আপলোড</span>
+                            </button>
+                            <button class="toolbar-btn" id="serialBtn" title="সিরিয়াল মনিটর">
+                                <i class="fas fa-terminal"></i>
+                                <span class="btn-text">সিরিয়াল</span>
+                            </button>
+                            <div class="toolbar-divider"></div>
+                            <button class="toolbar-btn" id="formatBtn" title="কোড ফরম্যাট">
+                                <i class="fas fa-indent"></i>
+                            </button>
+                            <button class="toolbar-btn" id="undoBtn" title="আন্ডো">
+                                <i class="fas fa-undo"></i>
+                            </button>
+                            <button class="toolbar-btn" id="redoBtn" title="রিডো">
+                                <i class="fas fa-redo"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="code-editor-container">
+                    <div class="code-editor" id="codeEditor">
+                        <!-- CodeMirror এখানে লোড হবে -->
+                    </div>
+                    
+                    <div class="editor-statusbar">
+                        <div class="status-left">
+                            <span id="cursorPosition">Ln 1, Col 1</span>
+                            <span id="languageIndicator">Python</span>
+                        </div>
+                        <div class="status-right">
+                            <span id="fileSize">0 bytes</span>
+                            <span id="encoding">UTF-8</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="output-container">
+                    <div class="output-tabs">
+                        <button class="output-tab active" data-output="output">
+                            <i class="fas fa-terminal"></i> আউটপুট
+                        </button>
+                        <button class="output-tab" data-output="serial">
+                            <i class="fas fa-plug"></i> সিরিয়াল মনিটর
+                        </button>
+                        <button class="output-tab" data-output="problems">
+                            <i class="fas fa-exclamation-triangle"></i> সমস্যা
+                        </button>
+                        <button class="output-tab" data-output="debug">
+                            <i class="fas fa-bug"></i> ডিবাগ
+                        </button>
+                    </div>
+                    
+                    <div class="output-content">
+                        <div class="output-panel active" id="outputPanel">
+                            <div class="output-header">
+                                <span>আউটপুট</span>
+                                <div class="output-actions">
+                                    <button class="output-action-btn" id="clearOutputBtn">
+                                        <i class="fas fa-trash"></i> পরিষ্কার
+                                    </button>
+                                    <button class="output-action-btn" id="copyOutputBtn">
+                                        <i class="fas fa-copy"></i> কপি
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="output-text" id="outputText">
+                                <!-- আউটপুট এখানে দেখাবে -->
+                                <div class="output-welcome">
+                                    <i class="fas fa-code"></i>
+                                    <h3>কোড এডিটরে স্বাগতম</h3>
+                                    <p>কোড লিখুন এবং রান বাটনে ক্লিক করুন</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="output-panel" id="serialPanel">
+                            <div class="output-header">
+                                <span>সিরিয়াল মনিটর</span>
+                                <div class="serial-controls">
+                                    <select id="serialPortSelect">
+                                        <option value="">পোর্ট সিলেক্ট করুন</option>
+                                    </select>
+                                    <input type="number" id="baudRate" value="9600" min="300" max="115200">
+                                    <button class="btn btn-sm" id="connectSerialBtn">
+                                        <i class="fas fa-plug"></i> কানেক্ট
+                                    </button>
+                                    <button class="btn btn-sm" id="disconnectSerialBtn">
+                                        <i class="fas fa-plug"></i> ডিসকানেক্ট
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="serial-terminal" id="serialTerminal">
+                                <!-- সিরিয়াল ডেটা -->
+                            </div>
+                            <div class="serial-input">
+                                <input type="text" id="serialInput" placeholder="সিরিয়াল কমান্ড লিখুন...">
+                                <button id="sendSerialBtn">
+                                    <i class="fas fa-paper-plane"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="output-panel" id="problemsPanel">
+                            <div class="output-header">
+                                <span>সমস্যা</span>
+                            </div>
+                            <div class="problems-list" id="problemsList">
+                                <!-- সমস্যা লিস্ট -->
+                            </div>
+                        </div>
+                        
+                        <div class="output-panel" id="debugPanel">
+                            <div class="output-header">
+                                <span>ডিবাগ কনসোল</span>
+                            </div>
+                            <div class="debug-console" id="debugConsole">
+                                <!-- ডিবাগ আউটপুট -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="editor-rightbar">
+                <div class="rightbar-section">
+                    <h3><i class="fas fa-lightbulb"></i> কোড সাজেশন</h3>
+                    <div class="suggestions-list" id="suggestionsList">
+                        <!-- কোড সাজেশন -->
+                    </div>
+                </div>
+
+                <div class="rightbar-section">
+                    <h3><i class="fas fa-bolt"></i> কুইক একশন</h3>
+                    <div class="quick-actions">
+                        <button class="quick-action-btn" data-action="blink-led">
+                            <i class="fas fa-lightbulb"></i>
+                            LED ব্লিংক
+                        </button>
+                        <button class="quick-action-btn" data-action="serial-print">
+                            <i class="fas fa-print"></i>
+                            সিরিয়াল প্রিন্ট
+                        </button>
+                        <button class="quick-action-btn" data-action="servo-control">
+                            <i class="fas fa-cog"></i>
+                            সার্ভো কন্ট্রোল
+                        </button>
+                        <button class="quick-action-btn" data-action="sensor-read">
+                            <i class="fas fa-thermometer-half"></i>
+                            সেন্সর রিড
+                        </button>
+                    </div>
+                </div>
+
+                <div class="rightbar-section">
+                    <h3><i class="fas fa-project-diagram"></i> হার্ডওয়্যার সিমুলেশন</h3>
+                    <div class="simulation-panel">
+                        <div class="simulation-board" id="simulationBoard">
+                            <!-- হার্ডওয়্যার সিমুলেশন -->
+                            <div class="board-display">
+                                <div class="arduino-board">
+                                    <div class="pin digital pin-2"></div>
+                                    <div class="pin digital pin-3"></div>
+                                    <div class="pin digital pin-4"></div>
+                                    <div class="pin digital pin-5"></div>
+                                    <div class="pin digital pin-6"></div>
+                                    <div class="pin digital pin-7"></div>
+                                    <div class="pin digital pin-8"></div>
+                                    <div class="pin digital pin-9"></div>
+                                    <div class="pin digital pin-10"></div>
+                                    <div class="pin digital pin-11"></div>
+                                    <div class="pin digital pin-12"></div>
+                                    <div class="pin digital pin-13"></div>
+                                    
+                                    <div class="led led-13"></div>
+                                    <div class="led led-power"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="simulation-controls">
+                            <button class="btn btn-sm" id="startSimulationBtn">
+                                <i class="fas fa-play"></i> সিমুলেশন শুরু
+                            </button>
+                            <button class="btn btn-sm" id="resetSimulationBtn">
+                                <i class="fas fa-redo"></i> রিসেট
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="editor-footer">
+            <div class="status-info">
+                <div class="status-item">
+                    <i class="fas fa-circle" id="connectionStatus"></i>
+                    <span id="connectionText">ডিসকানেক্টেড</span>
+                </div>
+                <div class="status-item">
+                    <i class="fas fa-microchip"></i>
+                    <span id="boardInfo">Arduino UNO</span>
+                </div>
+                <div class="status-item">
+                    <i class="fas fa-code-branch"></i>
+                    <span id="compilerStatus">প্রস্তুত</span>
+                </div>
+            </div>
+            
+            <div class="footer-actions">
+                <button class="btn btn-outline" id="exportBtn">
+                    <i class="fas fa-download"></i> এক্সপোর্ট
+                </button>
+                <button class="btn btn-primary" id="shareBtn">
+                    <i class="fas fa-share-alt"></i> শেয়ার
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- মডাল ডায়ালগ -->
+    <div class="modal" id="fileModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-file"></i> নতুন ফাইল</h3>
+                <button class="modal-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="fileName">ফাইল নাম</label>
+                    <input type="text" id="fileName" placeholder="example.py">
+                </div>
+                <div class="form-group">
+                    <label for="fileType">ফাইল টাইপ</label>
+                    <select id="fileType">
+                        <option value="python">Python (.py)</option>
+                        <option value="arduino">Arduino (.ino)</option>
+                        <option value="c">C (.c)</option>
+                        <option value="cpp">C++ (.cpp)</option>
+                        <option value="javascript">JavaScript (.js)</option>
+                        <option value="html">HTML (.html)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="cancelBtn">বাতিল</button>
+                <button class="btn btn-primary" id="createFileBtn">তৈরি করুন</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ফুটার -->
+    <footer class="footer">
+        <div class="footer-content">
+            <!-- হোমপেজ ফুটারের মতো -->
+        </div>
+    </footer>
+
+    <!-- CodeMirror Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/python/python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/clike/clike.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/javascript/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/edit/closebrackets.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/edit/matchbrackets.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/comment/comment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/fold/foldcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/fold/foldgutter.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/hint/show-hint.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/hint/anyword-hint.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/search/search.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/search/searchcursor.min.js"></script>
+    
+    <script src="../script.js"></script>
+    <script src="../javascript/editor-script.js"></script>
+</body>
+</html>
